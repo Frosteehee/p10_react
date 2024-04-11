@@ -2,24 +2,26 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from "react";
 import PropTypes from "prop-types";
-
 import "./style.scss";
 
 const Select = ({
   selection,
   onChange,
   name,
-  titleEmpty,
+  titleEmpty = false,
   label,
   type = "normal",
 }) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+
   const changeValue = (newValue) => {
-    onChange();
+
+    onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);
   };
+
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -65,7 +67,6 @@ const Select = ({
     </div>
   );
 };
-
 const Arrow = () => (
   <svg
     width="21"
@@ -80,7 +81,6 @@ const Arrow = () => (
     />
   </svg>
 );
-
 Select.propTypes = {
   selection: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func,
@@ -89,7 +89,6 @@ Select.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
 }
-
 Select.defaultProps = {
   onChange: () => null,
   titleEmpty: false,
@@ -97,5 +96,4 @@ Select.defaultProps = {
   type: "normal",
   name: "select",
 }
-
 export default Select;
