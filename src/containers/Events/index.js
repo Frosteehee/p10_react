@@ -12,8 +12,7 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-
-const events=type ? data?.events.filter((event) => event.type === type) : data?.events;
+  const events=type ? data?.events.filter((event) => event.type === type) : data?.events;
 
   const filteredEvents = (events || []).filter((event, index) => {
   if (

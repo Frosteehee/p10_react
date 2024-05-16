@@ -1,3 +1,6 @@
+// Corrections Slider bulletPoint et Image blanche + ordre
+
+
 import { useEffect, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
@@ -7,7 +10,6 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
 
-  // Assurez-vous que data et data.focus existent avant de continuer
   const byDateDesc = data?.focus ? data.focus.sort((evtA, evtB) =>
     new Date(evtB.date) - new Date(evtA.date)
   ) : [];
@@ -25,10 +27,11 @@ const Slider = () => {
   };
 
   return (
+   
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (        
         <div
-          key={event.id} // Utilisez l'ID unique pour la clé
+          key={event.id} // Utiliser l'ID unique pour la clé
           className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}
         >
           <img src={event.cover} alt={event.title} />

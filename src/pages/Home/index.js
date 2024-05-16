@@ -117,17 +117,14 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {
-          last && ( // Vérif que "last" est chargé avant d'afficher EventCard
-            <EventCard
-              imageSrc={last.cover}
-              title={last.title}
-              date={new Date(last.date)}
-              small 
-              label="boom"
-            />
-          )
-        }
+        <EventCard
+  imageSrc={last?.cover || "/chemin/vers/image-par-defaut.png"}
+  title={last?.title || "Titre par défaut"}
+  date={new Date(last?.date)}
+  small
+  label="boom"
+/>
+
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
